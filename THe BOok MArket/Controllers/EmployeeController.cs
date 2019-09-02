@@ -19,10 +19,22 @@ namespace THe_BOok_MArket.Controllers
         private The_Book_MarketEntities db = new The_Book_MarketEntities();
 
         // GET: Employee
-        public ActionResult Index()
+        public ActionResult Index(string searchBy, string search)
         {
-            var employees = db.Employees.Include(e => e.Employee_Gender).Include(e => e.Employee_Title).Include(e => e.User);
-            return View(employees.ToList());
+            if (searchBy == "Name")
+            {
+                return View(db.Employees.Where(x => x.Employee_Name.Contains(search) || search == null).ToList());
+            }
+            else if (searchBy == "Surname")
+            {
+                return View(db.Employees.Where(x => x.Employee_Surname.StartsWith(search) || search == null).ToList());
+            }
+            else
+            {
+                return View(db.Employees.Include(e => e.Employee_Gender).Include(e => e.Employee_Title).Include(e => e.User));
+            }
+          
+
         }
 
         // GET: Employee/Details/5

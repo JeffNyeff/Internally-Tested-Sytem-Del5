@@ -121,6 +121,8 @@ Customer_Name varchar(50) ,
 Customer_Surname varchar(50), 
 Customer_Email varchar(30),
 Customer_Contact bigint, 
+Product_Name varchar(100),
+[Date] datetime
 )
 GO
 
@@ -135,6 +137,9 @@ GO
 CREATE TABLE Sale 
 (
 Sale_ID int Identity (411,1) PRIMARY KEY  Not Null,
+Quantity int,
+Price decimal,
+Total decimal,
 Customer_ID int references Customer (Customer_ID) Not Null,
 PaymentType_ID int references Payment_Type (PaymentType_ID),
 Employee_ID int references Employee (Employee_ID), 
@@ -207,10 +212,11 @@ CREATE TABLE Book_Supplier
 (
 BookSupplier_ID int Identity (10000,1) Primary Key ,
 BookSupplier_Name varchar(35),
-BookSupplier_Surname varchar(35), 
-BookSupplier_Email varchar(30),
-BookSupplier_Address varchar(50),
-BookSupplier_Type varchar(30),
+BookSupplier_Phone varchar(30),
+BookTitle varchar(200),
+Condition varchar(200),
+Edition varchar(50),
+[Date] datetime
 )
 GO
 
@@ -229,7 +235,9 @@ Book_Title varchar(50),
 Book_Author varchar(50),
 ISBN varchar(100), 
 Book_Edition int, 
+BookSupplier_ID int references Book_Supplier (BookSupplier_ID),
 BookStatus_ID int references Book_Status(BookStatus_ID),
+Condition_ID int   references Condition(Condition_ID) Not Null,
 )
 GO 
 
@@ -246,8 +254,9 @@ GO
 CREATE TABLE Purchase
 (
 Purchase_ID int Identity (15000,1) Primary Key Not Null,
-Purchase_Amount int,
-Purchase_Date int,
+Quantity decimal,
+Price decimal,
+Amount decimal,
 BookSupplier_ID int references Book_Supplier(BookSupplier_ID)
 )
 GO 
@@ -316,7 +325,6 @@ InvSuppOrder_ID int  references Inventory_Supplier_Order(InvSuppOrder_ID) Not Nu
 Inventory_ID int references Inventory(Inventory_ID),
 SuppOrder_Status_ID int references Order_Status(SuppOrder_Status_ID),
 Quanity int, 
-Line_Total FLOAT,
 [Date] DATETIME,
 Primary Key(InvSuppOrder_ID,Inventory_ID)
 )
@@ -423,11 +431,11 @@ INSERT INTO Employee values('902','Mavis','Mavresh','256 Stanza Bo Timer, Arcadi
 Go
 
 ---Insert into Customer
-Insert Into Customer Values ('John Wesly Phuphuta', 'Phuphuta', 'jw411@gmail.com','0732257848')
-Insert Into Customer Values ('Mama', 'Afrika', 'mamakajumayma@gmail.com','0865658758')
-Insert Into Customer Values ('Jolyn', 'Palmer', 'formulajumpjp@gmail.com','07985865854')
-Insert Into Customer Values ('Zack', 'Snyder', 'ezisnacks@gmail.com','01285796584')
-Go
+--Insert Into Customer Values ('John Wesly Phuphuta', 'Phuphuta', 'jw411@gmail.com','0732257848')
+--Insert Into Customer Values ('Mama', 'Afrika', 'mamakajumayma@gmail.com','0865658758')
+--Insert Into Customer Values ('Jolyn', 'Palmer', 'formulajumpjp@gmail.com','07985865854')
+--Insert Into Customer Values ('Zack', 'Snyder', 'ezisnacks@gmail.com','01285796584')
+--Go
 
 
 ---Insert into Book_Status
@@ -438,11 +446,11 @@ insert into Book_Status values('in demand') --if requested more than once
 go
 
 ---Insert into Book
-insert into Book values('1 million words','Brian Griffin','978-0-639-0126-5','3',10)
+/*insert into Book values('1 million words','Brian Griffin','978-0-639-0126-5','3',10)
 insert into Book values('Assurance: Audit Perspective','Ehi Oka Moka','878-0-677-2580-5','4',10)
 insert into Book values('OBS 321: Final Observation','Gaba Absa','8625-0-877-2950-5','4',20)
 insert into Book values('Riding Dirty For Dummies','Gofer Modal','565-5-785-652-5','1',20)
-Go
+Go*/
 
 ---Insert into Condition
 insert into Condition values('Excellent')
@@ -450,12 +458,12 @@ insert into Condition values('Good')
 insert into Condition values('Bad')
 GO
 
----Insert into Book_Condition
+/*---Insert into Book_Condition
 insert into Book_Condition values('6000','12000','1','255')
 insert into Book_Condition values('6000','12001','2','250')
 insert into Book_Condition values('6000','12002','1','260')
 insert into Book_Condition values('6500','12003','1','185')
-GO
+GO*/
 
 ---Insert into Inventory_Supplier
 insert into Inventory_Supplier values('TDK Wholesalers','106 Industry drive, Auckland Park','tdksuppliers@mail1.com','0112548569')

@@ -18,7 +18,6 @@ namespace THe_BOok_MArket.Models
         public int Inventory_ID { get; set; }
         public Nullable<int> SuppOrder_Status_ID { get; set; }
         public Nullable<int> Quanity { get; set; }
-        public Nullable<double> Line_Total { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
     
         public virtual Inventory Inventory { get; set; }

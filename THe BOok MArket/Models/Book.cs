@@ -11,7 +11,8 @@ namespace THe_BOok_MArket.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Book
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,13 +24,20 @@ namespace THe_BOok_MArket.Models
         }
     
         public int Book_ID { get; set; }
+
+        [Display(Name = "Author")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Input required")]
         public string Book_Title { get; set; }
         public string Book_Author { get; set; }
         public string ISBN { get; set; }
         public Nullable<int> Book_Edition { get; set; }
+        public Nullable<int> BookSupplier_ID { get; set; }
         public Nullable<int> BookStatus_ID { get; set; }
+        public int Condition_ID { get; set; }
     
         public virtual Book_Status Book_Status { get; set; }
+        public virtual Book_Supplier Book_Supplier { get; set; }
+        public virtual Condition Condition { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Book_Condition> Book_Condition { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -80,6 +80,12 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="QRCoder, Version=1.3.6.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\QRCoder.1.3.6\lib\net40\QRCoder.dll</HintPath>
     </Reference>
@@ -159,8 +165,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\BooksController.cs" />
-    <Compile Include="Controllers\Book_RequestController.cs" />
     <Compile Include="Controllers\Book_SupplierController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
@@ -169,10 +173,9 @@
     <Compile Include="Controllers\Inventory_SupplierController.cs" />
     <Compile Include="Controllers\Inventory_TypeController.cs" />
     <Compile Include="Controllers\Payment_TypeController.cs" />
-    <Compile Include="Controllers\ProfilePicController.cs" />
-    <Compile Include="Controllers\Prospective_BookController.cs" />
     <Compile Include="Controllers\PurchaseController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Controllers\SaleController.cs" />
     <Compile Include="Controllers\UserRoleController.cs" />
     <Compile Include="Controllers\UsersAuthController.cs" />
     <Compile Include="EncryptPassword.cs" />
@@ -354,6 +357,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -490,13 +494,6 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
-    <EntityDeploy Include="Models\Model.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model.edmx.diagram">
-      <DependentUpon>Model.edmx</DependentUpon>
-    </Content>
     <Content Include="fonts\dashboard.eot" />
     <Content Include="fonts\dashboard.ttf" />
     <Content Include="fonts\dashboard.woff" />
@@ -516,6 +513,13 @@
     </Content>
     <Content Include="OrderDataSet.xsc">
       <DependentUpon>OrderDataSet.xsd</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
     </Content>
     <None Include="OrderDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
@@ -776,11 +780,6 @@
     <Content Include="vendor\jquery.cookie\component.json" />
     <Content Include="vendor\jquery.cookie\cookie.jquery.json" />
     <Content Include="vendor\popper.js\umd\poppper.js.flow" />
-    <Content Include="Views\Purchase\Create.cshtml" />
-    <Content Include="Views\Purchase\Delete.cshtml" />
-    <Content Include="Views\Purchase\Details.cshtml" />
-    <Content Include="Views\Purchase\Edit.cshtml" />
-    <Content Include="Views\Purchase\Index.cshtml" />
     <Content Include="Views\Inventory_Type\Create.cshtml" />
     <Content Include="Views\Inventory_Type\Delete.cshtml" />
     <Content Include="Views\Inventory_Type\Details.cshtml" />
@@ -818,11 +817,6 @@
     <Content Include="Views\Books\Details.cshtml" />
     <Content Include="Views\Books\Edit.cshtml" />
     <Content Include="Views\Books\Index.cshtml" />
-    <Content Include="Views\Book_Supplier\Create.cshtml" />
-    <Content Include="Views\Book_Supplier\Delete.cshtml" />
-    <Content Include="Views\Book_Supplier\Details.cshtml" />
-    <Content Include="Views\Book_Supplier\Edit.cshtml" />
-    <Content Include="Views\Book_Supplier\Index.cshtml" />
     <Content Include="Views\Shared\Layout10.cshtml" />
     <Content Include="Views\Shared\Layout12.cshtml" />
     <Content Include="Views\Reports\InventoryReport.cshtml" />
@@ -868,6 +862,13 @@
     <Content Include="Views\Home\SuppOrderList.cshtml" />
     <Content Include="Views\Home\StockTurnsList.cshtml" />
     <Content Include="Views\Home\InventoryTypeList.cshtml" />
+    <Content Include="Views\Purchase\Index.cshtml" />
+    <Content Include="Views\Sale\Index.cshtml" />
+    <Content Include="Views\Book_Supplier\Create.cshtml" />
+    <Content Include="Views\Book_Supplier\Delete.cshtml" />
+    <Content Include="Views\Book_Supplier\Details.cshtml" />
+    <Content Include="Views\Book_Supplier\Edit.cshtml" />
+    <Content Include="Views\Book_Supplier\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -15,25 +15,10 @@ namespace THe_BOok_MArket.Controllers
         private The_Book_MarketEntities db = new The_Book_MarketEntities();
 
         // GET: Book_Supplier
-        public ActionResult Index(string searchBy, string search)
+        public ActionResult Index()
         {
-            if (searchBy == "Name")
-            {
-                return View(db.Book_Supplier.Where(x => x.BookSupplier_Name.Contains(search) || search == null).ToList());
-            }
-            else if (searchBy == "Email")
-            {
-                return View(db.Book_Supplier.Where(x => x.BookSupplier_Email.StartsWith(search) || search == null).ToList());
-            }
-
-            else
-            {
-                return View(db.Book_Supplier.Where(x => x.BookSupplier_Surname.Contains(search) || search == null).ToList());
-            }
-
-
+            return View(db.Book_Supplier.ToList());
         }
-
 
         // GET: Book_Supplier/Details/5
         public ActionResult Details(int? id)
@@ -61,7 +46,7 @@ namespace THe_BOok_MArket.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BookSupplier_ID,BookSupplier_Name,BookSupplier_Surname,BookSupplier_Email,BookSupplier_Address,BookSupplier_Type")] Book_Supplier book_Supplier)
+        public ActionResult Create([Bind(Include = "BookSupplier_ID,BookSupplier_Name,BookSupplier_Phone,BookTitle,Condition,Edition,Date")] Book_Supplier book_Supplier)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +78,7 @@ namespace THe_BOok_MArket.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BookSupplier_ID,BookSupplier_Name,BookSupplier_Surname,BookSupplier_Email,BookSupplier_Address,BookSupplier_Type")] Book_Supplier book_Supplier)
+        public ActionResult Edit([Bind(Include = "BookSupplier_ID,BookSupplier_Name,BookSupplier_Phone,BookTitle,Condition,Edition,Date")] Book_Supplier book_Supplier)
         {
             if (ModelState.IsValid)
             {

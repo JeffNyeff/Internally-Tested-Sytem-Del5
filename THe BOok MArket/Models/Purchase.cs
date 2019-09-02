@@ -21,8 +21,9 @@ namespace THe_BOok_MArket.Models
         }
     
         public int Purchase_ID { get; set; }
-        public Nullable<int> Purchase_Amount { get; set; }
-        public Nullable<int> Purchase_Date { get; set; }
+        public Nullable<decimal> Quantity { get; set; }
+        public Nullable<decimal> Price { get; set; }
+        public Nullable<decimal> Amount { get; set; }
         public Nullable<int> BookSupplier_ID { get; set; }
     
         public virtual Book_Supplier Book_Supplier { get; set; }

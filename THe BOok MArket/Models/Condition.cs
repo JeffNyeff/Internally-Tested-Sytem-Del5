@@ -17,12 +17,15 @@ namespace THe_BOok_MArket.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Condition()
         {
+            this.Books = new HashSet<Book>();
             this.Book_Condition = new HashSet<Book_Condition>();
         }
     
         public int Condition_ID { get; set; }
         public string Condition_Description { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Book> Books { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Book_Condition> Book_Condition { get; set; }
     }

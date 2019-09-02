@@ -11,7 +11,8 @@ namespace THe_BOok_MArket.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,10 +24,17 @@ namespace THe_BOok_MArket.Models
         }
     
         public int Customer_ID { get; set; }
+
+        [Display(Name = "First Name")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Name required")]
         public string Customer_Name { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "required")]
         public string Customer_Surname { get; set; }
         public string Customer_Email { get; set; }
         public Nullable<long> Customer_Contact { get; set; }
+        public string Product_Name { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Book_Request> Book_Request { get; set; }

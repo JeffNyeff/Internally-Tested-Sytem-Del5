@@ -22,6 +22,9 @@ namespace THe_BOok_MArket.Models
         }
     
         public int Sale_ID { get; set; }
+        public Nullable<int> Quantity { get; set; }
+        public Nullable<decimal> Price { get; set; }
+        public Nullable<decimal> Total { get; set; }
         public int Customer_ID { get; set; }
         public Nullable<int> PaymentType_ID { get; set; }
         public Nullable<int> Employee_ID { get; set; }
